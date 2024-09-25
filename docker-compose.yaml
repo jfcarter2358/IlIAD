@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  ${APP_NAME}:
+    image: "${APP_NAME}"
+    ports:
+      - "127.0.0.1:${APP_PORT}:${APP_PORT}"
+    environment:
+      # Your ENV config here
+    depends_on:
+      - db
+    tty: true
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'

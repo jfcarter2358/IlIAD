@@ -1,0 +1,72 @@
+.variables:
+  docker_org: ${DOCKER_ORG}
+  app_name: ${APP_NAME}
+  platforms:
+    - linux/amd64
+    - linux/arm64
+    - linux/arm/v7
+  version: 0.0.1
+set-version:
+  help: Update version constant from VERSION file
+  cmd: |
+    version = ?(cat src/VERSION).strip()
+    sed -i 's/const VERSION = ".*"/const VERSION = "{version}"/' src/constants/constants.go
+build-docker:
+  help: Build Docker image
+  cmd: |
+    stud set-version
+    docker build -t {app_name} --no-cache -f src/Dockerfile .
+push-docker:
+  help: Push Docker image
+  cmd: |
+    version = ?(cat src/VERSION).strip()
+    docker tag {app_name} {docker_org}/{app_name}:{version}
+    docker push {docker_org}/{app_name}:{version}
+build-docker-test:
+  help: Build test Docker image
+  cmd: |
+    stud set-version
+    docker build -t {app_name}:test --no-cache -f src/test.Dockerfile .
+publish-docker:
+  help: Publish image
+  cmd: |
+    stud set-version
+
+    platform_string = ','.join(platforms)
+    version = ?(cat src/VERSION).strip()
+
+    print(f"Running build command: docker buildx build --platform {platform_string} -t {docker_org}/{app_name}:{version} -f src/Dockerfile --push .")
+    docker buildx build --platform {platform_string} -t {docker_org}/{app_name}:{version} -f src/Dockerfile --push .
+
+    print('Done!')
+kill-docker:
+  help: Kill docker-compose deployments
+  cmd: |
+    docker-compose down --remove-orphans
+    docker compose rm -f
+run-docker:
+  help: Deploy images via docker compose
+  cmd: |
+    docker compose down --remove-orphans
+    docker compose rm -f
+    docker compose up
+run-docker-test:
+  help: Deploy test images via docker compose
+  cmd: |
+    docker compose down --remove-orphans
+    docker compose rm -f
+    docker compose -f test.docker-compose.yaml up
+test:
+  help: Run tests against deployed images
+  cmd: |
+    ./test/run.sh
+init-docs:
+  help: Initialize Swagger docs
+  cmd: |
+    cd src
+    swag init
+docs:
+  help: Generate Swagger docs
+  cmd: |
+    cd src
+    swag fmt
