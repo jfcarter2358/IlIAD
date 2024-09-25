@@ -962,150 +962,150 @@ img.avatar {
 }
 
 /* background colors */
-.${APP_NAME}-charcoal,
-.${APP_NAME}-hover-charcoal:hover {
+.iad-charcoal,
+.iad-hover-charcoal:hover {
     color: #fff !important;
     background-color: #373F51 !important
 }
 
-.${APP_NAME}-grey,
-.${APP_NAME}-hover-grey:hover {
+.iad-grey,
+.iad-hover-grey:hover {
     color: #000 !important;
     background-color: #aaaaaa !important
 }
 
-.${APP_NAME}-white,
-.${APP_NAME}-hover-white:hover {
+.iad-white,
+.iad-hover-white:hover {
     color: #fff !important;
     background-color: #D8DBE2 !important
 }
 
-.${APP_NAME}-blue,
-.${APP_NAME}-hover-blue:hover {
+.iad-blue,
+.iad-hover-blue:hover {
     color: #fff !important;
     background-color: #5E81AC !important
 }
 
-.${APP_NAME}-green,
-.${APP_NAME}-hover-green:hover {
+.iad-green,
+.iad-hover-green:hover {
     color: #fff !important;
     background-color: #A3BE8C !important
 }
 
-.${APP_NAME}-yellow,
-.${APP_NAME}-hover-yellow:hover {
+.iad-yellow,
+.iad-hover-yellow:hover {
     color: #000 !important;
     background-color: #EBCB8B !important
 }
 
-.${APP_NAME}-orange,
-.${APP_NAME}-hover-orange:hover {
+.iad-orange,
+.iad-hover-orange:hover {
     color: #000 !important;
     background-color: #D08770 !important
 }
 
-.${APP_NAME}-red,
-.${APP_NAME}-hover-red:hover {
+.iad-red,
+.iad-hover-red:hover {
     color: #000 !important;
     background-color: #BF616A !important
 }
 
-.${APP_NAME}-purple,
-.${APP_NAME}-hover-purple:hover {
+.iad-purple,
+.iad-hover-purple:hover {
     color: #000 !important;
     background-color: #B48EAD !important
 }
 
 /* text colors */
-.${APP_NAME}-text-charcoal,
-.${APP_NAME}-hover-text-charcoal:hover {
+.iad-text-charcoal,
+.iad-hover-text-charcoal:hover {
     color: #373F51 !important
 }
 
-.${APP_NAME}-text-grey,
-.${APP_NAME}-hover-text-grey:hover {
+.iad-text-grey,
+.iad-hover-text-grey:hover {
     color: #aaaaaa !important
 }
 
-.${APP_NAME}-text-white,
-.${APP_NAME}-hover-text-white:hover {
+.iad-text-white,
+.iad-hover-text-white:hover {
     color: #D8DBE2 !important
 }
 
-.${APP_NAME}-text-blue,
-.${APP_NAME}-hover-text-blue:hover {
+.iad-text-blue,
+.iad-hover-text-blue:hover {
     color: #5E81AC !important
 }
 
-.${APP_NAME}-text-green,
-.${APP_NAME}-hover-text-green:hover {
+.iad-text-green,
+.iad-hover-text-green:hover {
     color: #A3BE8C !important
 }
 
-.${APP_NAME}-text-yellow,
-.${APP_NAME}-hover-text-yellow:hover {
+.iad-text-yellow,
+.iad-hover-text-yellow:hover {
     color: #EBCB8B !important
 }
 
-.${APP_NAME}-text-orange,
-.${APP_NAME}-hover-text-orange:hover {
+.iad-text-orange,
+.iad-hover-text-orange:hover {
     color: #D08770 !important
 }
 
-.${APP_NAME}-text-red,
-.${APP_NAME}-hover-text-red:hover {
+.iad-text-red,
+.iad-hover-text-red:hover {
     color: #BF616A !important
 }
 
-.${APP_NAME}-text-purple,
-.${APP_NAME}-hover-text-purple:hover {
+.iad-text-purple,
+.iad-hover-text-purple:hover {
     color: #B48EAD !important
 }
 
 
 /* border colors */
-.${APP_NAME}-border-charcoal,
-.${APP_NAME}-hover-border-charcoal:hover {
+.iad-border-charcoal,
+.iad-hover-border-charcoal:hover {
     border-color: #373F51 !important
 }
 
-.${APP_NAME}-border-grey,
-.${APP_NAME}-hover-border-grey:hover {
+.iad-border-grey,
+.iad-hover-border-grey:hover {
     border-color: #aaaaaa !important
 }
 
-.${APP_NAME}-border-white,
-.${APP_NAME}-hover-border-white:hover {
+.iad-border-white,
+.iad-hover-border-white:hover {
     border-color: #D8DBE2 !important
 }
 
-.${APP_NAME}-border-blue,
-.${APP_NAME}-hover-border-blue:hover {
+.iad-border-blue,
+.iad-hover-border-blue:hover {
     border-color: #5E81AC !important
 }
 
-.${APP_NAME}-border-green,
-.${APP_NAME}-hover-border-green:hover {
+.iad-border-green,
+.iad-hover-border-green:hover {
     border-color: #A3BE8C !important
 }
 
-.${APP_NAME}-border-yellow,
-.${APP_NAME}-hover-border-yellow:hover {
+.iad-border-yellow,
+.iad-hover-border-yellow:hover {
     border-color: #EBCB8B !important
 }
 
-.${APP_NAME}-border-orange,
-.${APP_NAME}-hover-border-orange:hover {
+.iad-border-orange,
+.iad-hover-border-orange:hover {
     border-color: #D08770 !important
 }
 
-.${APP_NAME}-border-red,
-.${APP_NAME}-hover-border-red:hover {
+.iad-border-red,
+.iad-hover-border-red:hover {
     border-color: #BF616A !important
 }
 
-.${APP_NAME}-border-purple,
-.${APP_NAME}-hover-border-purple:hover {
+.iad-border-purple,
+.iad-hover-border-purple:hover {
     border-color: #B48EAD !important
 }
 

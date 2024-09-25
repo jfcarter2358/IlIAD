@@ -1,6 +1,6 @@
 .variables:
-  docker_org: ${DOCKER_ORG}
-  app_name: ${APP_NAME}
+  docker_org: jfcarter2358
+  app_name: iad
   platforms:
     - linux/amd64
     - linux/arm64

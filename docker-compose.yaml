@@ -1,9 +1,9 @@
 version: "3.9"
 services:
-  ${APP_NAME}:
-    image: "${APP_NAME}"
+  iad:
+    image: "iad"
     ports:
-      - "127.0.0.1:${APP_PORT}:${APP_PORT}"
+      - "127.0.0.1:9109:9109"
     environment:
       # Your ENV config here
     depends_on:

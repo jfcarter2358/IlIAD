@@ -49,7 +49,7 @@ run_test() {
     curl "http://localhost:19999"
     curl "http://localhost:29999"
 
-    docker compose cp ${APP_NAME}:/home/${APP_NAME}/cover.out "coverage/${APP_NAME}.cover.out"
+    docker compose cp iad:/home/iad/cover.out "coverage/iad.cover.out"
 
     stop_services
 }

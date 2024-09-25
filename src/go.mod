@@ -1,4 +1,4 @@
-module ${APP_NAME}
+module iad
 
 go 1.18
 

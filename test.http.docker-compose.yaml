@@ -1,9 +1,9 @@
 version: "3.9"
 services:
-  ${APP_NAME}:
-    image: "${APP_NAME}:test"
+  iad:
+    image: "iad:test"
     ports:
-      - "127.0.0.1:${APP_PORT}:${APP_PORT}"
+      - "127.0.0.1:9109:9109"
       - "127.0.0.1:6666:6666"
     environment:
       RUN_MODE: "test"

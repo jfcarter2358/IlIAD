@@ -3,10 +3,10 @@
 package main
 
 import (
-	"${APP_NAME}/api"
-	"${APP_NAME}/docs"
-	"${APP_NAME}/middleware"
-	"${APP_NAME}/page"
+	"iad/api"
+	"iad/docs"
+	"iad/middleware"
+	"iad/page"
 
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"

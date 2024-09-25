@@ -1,4 +1,4 @@
-# ${APP_NAME_CAPITAL}
+# Iad
 
 ## About
 
@@ -8,4 +8,4 @@
 
 ## Contact
 
-This software is written and maintained by ${AUTHOR_NAME}, if you have any questions or issues please don't hesitate to reach out at ${AUTHOR_EMAIL} or submit issues at [https://github.com/${GITHUB_ORG}/${APP_NAME}/issues](https://github.com/${GITHUB_ORG}/${APP_NAME}/issues)
+This software is written and maintained by John Carter, if you have any questions or issues please don't hesitate to reach out at jfcarter2358@gmail.com or submit issues at [https://github.com/jfcarter2358/iad/issues](https://github.com/jfcarter2358/iad/issues)

@@ -10,13 +10,13 @@ RUN_DIR=$(dirname $0)
 
 pushd "${RUN_DIR}"
 
-echo "Starting ${APP_NAME}"
+echo "Starting iad"
 if [[ "${run_mode}" == "normal" ]]; then
-    ./${APP_NAME}
+    ./iad
 else 
     while true; do
         echo "Service started in coverage mode"
-        ./${APP_NAME} -test.coverprofile=cover.out "$@" || exit 1;
+        ./iad -test.coverprofile=cover.out "$@" || exit 1;
         echo "Server restarting.."
     done
 fi

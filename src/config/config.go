@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-const ENV_PREFIX = "${APP_NAME_UPPERCASE}_"
+const ENV_PREFIX = "IAD_"
 
 type ConfigObject struct {
 	LogLevel  string `env:"LOG_LEVEL"`

@@ -3,7 +3,7 @@
 package main
 
 import (
-	"${APP_NAME}/config"
+	"iad/config"
 	"context"
 	"crypto/tls"
 	"fmt"
@@ -42,14 +42,14 @@ func run(ctx context.Context, channel chan struct{}) {
 	router.Run(routerPort)
 }
 
-//	@title			${APP_NAME_CAPITAL} Swagger API
+//	@title			Iad Swagger API
 //	@version		0.0.1
-//	@description	${APP_DESCRIPTION}
+//	@description	Infrastructure as Data
 //	@termsOfService	http://swagger.io/terms/
 
-//	@contact.name	${AUTHOR_NAME}
-//	@contact.url	https://github.com/${GITHUB_ORG}/${APP_NAME}/issues
-//	@contact.email	${AUTHOR_EMAIL}
+//	@contact.name	John Carter
+//	@contact.url	https://github.com/jfcarter2358/iad/issues
+//	@contact.email	jfcarter2358@gmail.com
 
 // @license.name	MIT
 // @license.url	https://opensource.org/license/mit/
