@@ -1,0 +1,4 @@
+dependencies:
+- ../aws/iam
+language:
+- python
