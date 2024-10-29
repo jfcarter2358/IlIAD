@@ -2,10 +2,15 @@ package page
 
 import (
 	"net/http"
+	"sort"
+	"strings"
 
 	"github.com/jfcarter2358/ui"
 	"github.com/jfcarter2358/ui/page"
 	"github.com/jfcarter2358/ui/sidebar"
+	"github.com/jfcarter2358/ui/table"
+	"github.com/jfcarter2358/ui/table/cell"
+	"github.com/jfcarter2358/ui/table/header"
 
 	_ "embed"
 

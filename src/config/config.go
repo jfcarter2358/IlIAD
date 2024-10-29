@@ -8,22 +8,25 @@ import (
 	"strconv"
 )
 
-const ENV_PREFIX = "IAD_"
+const ENV_PREFIX = "ILLIAD_"
 
 type ConfigObject struct {
-	LogLevel  string `env:"LOG_LEVEL"`
-	LogFormat string `env:"LOG_FORMAT"`
-	Port      int    `env:"PORT"`
-	// Add your config fields with the `env:"<env var suffix to pull from>`
+	LogLevel     string `env:"LOG_LEVEL"`
+	LogFormat    string `env:"LOG_FORMAT"`
+	Port         int    `env:"PORT"`
+	Providers    string `env:"PROVIDERS"`
+	ProviderPath string `env:"PROVIDER_PATH"`
 }
 
 var Config ConfigObject
 
 func LoadConfig() {
 	Config = ConfigObject{
-		LogLevel:  "INFO",
-		LogFormat: "console",
-		// Add default values here
+		LogLevel:     "INFO",
+		LogFormat:    "console",
+		Port:         9019,
+		Providers:    "",
+		ProviderPath: "/home/illiad/providers",
 	}
 
 	v := reflect.ValueOf(Config)
