@@ -20,11 +20,12 @@ type Bucket struct {
 }
 
 func Post(obj map[string]interface{}, repo gitdb.Repo, path string) error {
-	if err := repo.Init(); err != nil {
+	r := &repo
+	if err := r.Init(); err != nil {
 		return err
 	}
-	repo.Path = path
-	logger.Debugf("", "%v", repo)
+	r.Path = path
+	logger.Debugf("", "%v", r)
 	tmpl, err := template.New("s3").Parse(bucketTemplate)
 	if err != nil {
 		return err
@@ -35,7 +36,7 @@ func Post(obj map[string]interface{}, repo gitdb.Repo, path string) error {
 	logger.Debugf("", path)
 
 	var buckets []Bucket
-	dat, err := repo.Get(path)
+	dat, err := r.Get(path)
 	if err != nil {
 		logger.Warnf("", "Error on get: %s", err.Error())
 	} else {
@@ -75,7 +76,7 @@ func Post(obj map[string]interface{}, repo gitdb.Repo, path string) error {
 
 	logger.Debugf("", "Rendered")
 
-	logger.Debugf("", "%s", repo.LocalDir)
+	logger.Debugf("", "%s", r.LocalDir)
 
 	out := ""
 	for _, bucket := range buckets {
@@ -85,7 +86,7 @@ func Post(obj map[string]interface{}, repo gitdb.Repo, path string) error {
 		}
 		out += string(bytes)
 	}
-	if err := repo.Post([]byte(out), path); err != nil {
+	if err := r.Post([]byte(out), path); err != nil {
 		return err
 	}
 	return nil
