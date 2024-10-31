@@ -24,6 +24,7 @@ func Post(obj map[string]interface{}, repo gitdb.Repo, path string) error {
 		return err
 	}
 	repo.Path = path
+	logger.Debugf("", "%v", repo)
 	tmpl, err := template.New("s3").Parse(bucketTemplate)
 	if err != nil {
 		return err
