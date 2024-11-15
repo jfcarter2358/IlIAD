@@ -8,25 +8,27 @@ import (
 	"strconv"
 )
 
-const ENV_PREFIX = "ILLIAD_"
+const ENV_PREFIX = "ILIAD_"
 
 type ConfigObject struct {
-	LogLevel     string `env:"LOG_LEVEL"`
-	LogFormat    string `env:"LOG_FORMAT"`
-	Port         int    `env:"PORT"`
-	Providers    string `env:"PROVIDERS"`
-	ProviderPath string `env:"PROVIDER_PATH"`
+	LogLevel  string                    `env:"LOG_LEVEL"`
+	LogFormat string                    `env:"LOG_FORMAT"`
+	Port      int                       `env:"PORT"`
+	Providers map[string]ConfigProvider `env:"PROVIDERS"`
+}
+
+type ConfigProvider struct {
+	URL string `json:"url"`
 }
 
 var Config ConfigObject
 
 func LoadConfig() {
 	Config = ConfigObject{
-		LogLevel:     "INFO",
-		LogFormat:    "console",
-		Port:         9019,
-		Providers:    "",
-		ProviderPath: "/home/illiad/providers",
+		LogLevel:  "INFO",
+		LogFormat: "console",
+		Port:      9019,
+		Providers: map[string]ConfigProvider{"aws": {URL: "localhost:2222"}},
 	}
 
 	v := reflect.ValueOf(Config)

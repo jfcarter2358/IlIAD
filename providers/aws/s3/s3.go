@@ -5,7 +5,7 @@ import (
 	_ "bytes"
 	_ "embed"
 	"encoding/json"
-	"text/template"
+	"html/template"
 
 	"github.com/jfcarter2358/gitdb"
 	"github.com/jfcarter2358/go-logger"
@@ -19,35 +19,15 @@ type Bucket struct {
 	TF   string `json:"tf"`
 }
 
-func Post(obj map[string]interface{}, repo gitdb.Repo, path string) error {
-	r := &repo
-	if err := r.Init(); err != nil {
-		return err
-	}
-	r.Path = path
-	logger.Debugf("", "%v", r)
+func Post(obj map[string]interface{}, repo *gitdb.Repo, path string) error {
 	tmpl, err := template.New("s3").Parse(bucketTemplate)
 	if err != nil {
 		return err
 	}
 
-	logger.Infof("", "Starting repo get")
-	logger.Debugf("", "%v", obj)
-	logger.Debugf("", path)
-
-	var buckets []Bucket
-	dat, err := r.Get(path)
+	buckets, err := repoGet(obj, repo, path)
 	if err != nil {
-		logger.Warnf("", "Error on get: %s", err.Error())
-	} else {
-		var b Bucket
-		if err := gitdb.Unmarshal(dat, &b); err != nil {
-			if err := gitdb.Unmarshal(dat, &buckets); err != nil {
-				logger.Warnf("", "Unable to get documents: %s", err.Error())
-			}
-		} else {
-			buckets = []Bucket{b}
-		}
+		return err
 	}
 
 	logger.Debugf("", "Marshalling bucket")
@@ -76,7 +56,7 @@ func Post(obj map[string]interface{}, repo gitdb.Repo, path string) error {
 
 	logger.Debugf("", "Rendered")
 
-	logger.Debugf("", "%s", r.LocalDir)
+	logger.Debugf("", "%s", repo.LocalDir)
 
 	out := ""
 	for _, bucket := range buckets {
@@ -86,7 +66,7 @@ func Post(obj map[string]interface{}, repo gitdb.Repo, path string) error {
 		}
 		out += string(bytes)
 	}
-	if err := r.Post([]byte(out), path); err != nil {
+	if err := repo.Post([]byte(out), path); err != nil {
 		return err
 	}
 	return nil
@@ -160,3 +140,31 @@ func Post(obj map[string]interface{}, repo gitdb.Repo, path string) error {
 // 	resp.StatusCode = http.StatusOK
 // 	return nil
 // }
+
+func repoGet(obj map[string]interface{}, repo *gitdb.Repo, path string) ([]Bucket, error) {
+	if err := repo.Init(); err != nil {
+		return []Bucket{}, err
+	}
+	repo.Path = path
+	logger.Debugf("", "%v", repo)
+
+	logger.Infof("", "Starting repo get")
+	logger.Debugf("", "%v", obj)
+	logger.Debugf("", path)
+
+	var buckets []Bucket
+	dat, err := repo.Get(path)
+	if err != nil {
+		logger.Warnf("", "Error on get: %s", err.Error())
+	} else {
+		var b Bucket
+		if err := gitdb.Unmarshal(dat, &b); err != nil {
+			if err := gitdb.Unmarshal(dat, &buckets); err != nil {
+				logger.Warnf("", "Unable to get documents: %s", err.Error())
+			}
+		} else {
+			buckets = []Bucket{b}
+		}
+	}
+	return buckets, nil
+}

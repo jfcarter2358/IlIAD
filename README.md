@@ -1,4 +1,4 @@
-# (**I**)nterface a(**l**)(**l**)owing for the implementation of the (**I**)nfrastructure (**A**)s (**D**)ata paradigm -- IllIAD
+# (**I**)nterface a(**l**)(**l**)owing for the implementation of the (**I**)nfrastructure (**A**)s (**D**)ata paradigm -- IlIAD
 
 ## About
 

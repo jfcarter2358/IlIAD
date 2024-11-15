@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "illiad.fullname" . }}
+  name: {{ include "iliad.fullname" . }}
   labels:
-    {{- include "illiad.labels" . | nindent 4 }}
+    {{- include "iliad.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "illiad.selectorLabels" . | nindent 4 }}
+    {{- include "iliad.selectorLabels" . | nindent 4 }}

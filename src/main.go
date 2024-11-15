@@ -3,12 +3,12 @@
 package main
 
 import (
-	"iad/config"
-	"context"
-	"crypto/tls"
 	"fmt"
+	"iad/config"
+	"iad/provider"
+	"log"
 	"math/rand"
-	"net/http"
+	"net/rpc"
 	"time"
 
 	logger "github.com/jfcarter2358/go-logger"
@@ -18,7 +18,7 @@ import (
 
 var router *gin.Engine
 
-func run(ctx context.Context, channel chan struct{}) {
+func main() {
 	// Set Gin to production mode
 	gin.SetMode(gin.ReleaseMode)
 
@@ -26,7 +26,7 @@ func run(ctx context.Context, channel chan struct{}) {
 	logger.SetLevel(config.Config.LogLevel)
 	logger.SetFormat(config.Config.LogFormat)
 
-	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: config.Config.TLSSkipVerify}
+	// http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: config.Config.TLSSkipVerify}
 
 	router = gin.New()
 	router.Use(gin.LoggerWithFormatter(logger.ConsoleLogFormatter))
@@ -38,23 +38,19 @@ func run(ctx context.Context, channel chan struct{}) {
 
 	rand.Seed(time.Now().UnixNano())
 
+	provider.Providers = make(map[string]*provider.Provider)
+
+	for name, conf := range config.Config.Providers {
+		logger.Infof("", "Connecting to %s at %s", name, conf.URL)
+		provider.Providers[name] = &provider.Provider{URL: conf.URL}
+		var err error
+		provider.Providers[name].Client, err = rpc.DialHTTP("tcp", conf.URL)
+		if err != nil {
+			log.Fatal("dialing:", err)
+		}
+
+	}
+
 	routerPort := fmt.Sprintf(":%d", config.Config.Port)
 	router.Run(routerPort)
-}
-
-//	@title			Iad Swagger API
-//	@version		0.0.1
-//	@description	Infrastructure as Data
-//	@termsOfService	http://swagger.io/terms/
-
-//	@contact.name	John Carter
-//	@contact.url	https://github.com/jfcarter2358/iad/issues
-//	@contact.email	jfcarter2358@gmail.com
-
-// @license.name	MIT
-// @license.url	https://opensource.org/license/mit/
-func main() {
-	channel := make(chan struct{})
-	ctx, _ := context.WithCancel(context.Background())
-	run(ctx, channel)
 }

@@ -1,5 +1,5 @@
 image:
-  repository: illiad
+  repository: iliad
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
@@ -8,6 +8,6 @@ image:
 postgres:
   host: postgres
   port: 5432
-  db: illiad
-  username: illiad
-  password: illiad
+  db: iliad
+  username: iliad
+  password: iliad

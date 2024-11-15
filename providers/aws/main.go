@@ -16,7 +16,7 @@ import (
 
 type Provider int64
 
-var MainRepo gitdb.Repo
+var MainRepo *gitdb.Repo
 
 func (p *Provider) Post(args *contract.Comm, resp *contract.Comm) error {
 	var objs []map[string]interface{}
@@ -55,7 +55,7 @@ func main() {
 	logger.SetLevel(config.Config.LogLevel)
 	logger.SetFormat(config.Config.LogFormat)
 
-	MainRepo = gitdb.Repo{
+	MainRepo = &gitdb.Repo{
 		URL:    "git@github.com:jfcarter2358/iliad",
 		Path:   "aws/aws.tf",
 		Ref:    "main",
